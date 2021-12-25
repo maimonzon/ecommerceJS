@@ -10,6 +10,7 @@ class Carrito {
 
     listarItems() {
         //mostrar items del carrito 
+        return this.lista;
     }
 
     agregarItem (item) {
@@ -28,6 +29,9 @@ class Carrito {
         //eliminar item
     }
 }
+
+
+
 
 class Producto {
 
@@ -51,3 +55,23 @@ class Producto {
     }
 }
 
+const producto1 = new Producto(001, "valija", 10500, true);
+const producto2 = new Producto (002, "carry on", 7000, true);
+const producto3 = new Producto (003, "bolso de mano", 6000, true);
+const producto4 = new Producto (004, "mochila", 4500, true);
+
+
+
+const carrito = new Carrito([producto1, producto2, producto3, producto4])
+
+
+//obtener los elementos del carrito
+console.log(carrito.listarItems())
+
+const productosDiv = document.getElementById('productos')
+console.log( productosDiv )
+
+//agregar título desde JS
+const title = document.createElement('h1')
+title.innerText = 'Encontrá todo para tu viaje'
+document.body.appendChild(title)
