@@ -15,6 +15,8 @@ class Carrito {
 
     agregarItem (item) {
         //agregar item al carrito
+        this.lista.push(item)
+        localStorage.setItem('carrito', JSON.stringify(this.lista)) //stringify vuelve string el objeto
     }
 
     encontrarItem(item) {
@@ -55,18 +57,44 @@ class Producto {
     }
 }
 
-const producto1 = new Producto(001, "valija", 10500, true);
-const producto2 = new Producto (002, "carry on", 7000, true);
-const producto3 = new Producto (003, "bolso de mano", 6000, true);
-const producto4 = new Producto (004, "mochila", 4500, true);
+const producto1 = new Producto(
+    001, 
+    "valija", 
+    10500, 
+    true);
+
+const producto2 = new Producto (
+    002, 
+    "carry on", 
+    7000, 
+    true);
+
+const producto3 = new Producto (
+    003, 
+    "handbag",
+    6000, 
+    true);
+
+const producto4 = new Producto (
+    004, 
+    "mochila", 
+    4500, 
+    true);
 
 
 
-const carrito = new Carrito([producto1, producto2, producto3, producto4])
+const carrito = new Carrito([])
+
+carrito.agregarItem(producto1)
+carrito.agregarItem(producto2)
+carrito.agregarItem(producto3)
+carrito.agregarItem(producto4)
 
 
 //obtener los elementos del carrito
 console.log(carrito.listarItems())
+const carritoFromStorage = JSON.parse(localStorage.getItem('carrito')) //regresa los objetos a su estado natural, sin ser string
+console.log(carritoFromStorage)
 
 const productosDiv = document.getElementById('productos')
 console.log( productosDiv )
